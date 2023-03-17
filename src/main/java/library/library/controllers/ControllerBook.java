@@ -1,7 +1,7 @@
 package library.library.controllers;
 
 import library.library.services.ServiceBook;
-import library.library.books.Book;
+import library.library.models.books.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
