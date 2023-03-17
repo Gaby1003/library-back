@@ -1,7 +1,7 @@
 package library.library.services;
 
-import library.library.books.Book;
-import library.library.books.BookRepository;
+import library.library.models.books.Book;
+import library.library.models.books.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

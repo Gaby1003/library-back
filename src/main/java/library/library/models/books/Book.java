@@ -1,4 +1,4 @@
-package library.library.books;
+package library.library.models.books;
 
 import lombok.*;
 

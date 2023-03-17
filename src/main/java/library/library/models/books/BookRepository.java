@@ -1,4 +1,4 @@
-package library.library.books;
+package library.library.models.books;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
