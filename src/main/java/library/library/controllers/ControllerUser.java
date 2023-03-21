@@ -20,8 +20,8 @@ public class ControllerUser {
     @PostMapping("/add")
     public ResponseEntity<?> addUser(@RequestBody LibraryUser user){
         try{
-            serviceLibraryUser.addUser(user);
-            return ResponseEntity.ok("Usuario agregado");
+                serviceLibraryUser.addUser(user);
+                return ResponseEntity.ok().build();
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -42,7 +42,7 @@ public class ControllerUser {
     public ResponseEntity<?> updateUser(@RequestBody LibraryUser user){
         try{
             serviceLibraryUser.updateUser(user);
-            return ResponseEntity.ok("Usuario actualizado");
+            return ResponseEntity.ok().build();
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -53,7 +53,7 @@ public class ControllerUser {
     public ResponseEntity<?> deleteUser(@RequestParam(name = "id") Integer id){
         try{
             serviceLibraryUser.deleteBook(id);
-            return ResponseEntity.ok("Usuario eliminado");
+            return ResponseEntity.ok().build();
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());

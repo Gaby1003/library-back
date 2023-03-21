@@ -19,7 +19,7 @@ public class ControllerInventory {
     public ResponseEntity<?> addInventory(@RequestBody Inventory inventory){
         try{
             serviceInventory.addInventory(inventory);
-            return ResponseEntity.ok("Inventorio agregado");
+            return ResponseEntity.ok().build();
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -40,7 +40,7 @@ public class ControllerInventory {
     public ResponseEntity<?> updateQuantity(@RequestBody Inventory inventory){
         try{
             serviceInventory.updateQuantity(inventory);
-            return ResponseEntity.ok("Inventario actualizado");
+            return ResponseEntity.ok().build();
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -51,7 +51,7 @@ public class ControllerInventory {
     public ResponseEntity<?> deleteInventory(@RequestParam(name = "id") Integer id){
         try{
             serviceInventory.deleteInventory(id);
-            return ResponseEntity.ok("Inventario eliminado");
+            return ResponseEntity.ok().build();
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());

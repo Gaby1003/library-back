@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/*@CrossOrigin(origins = "http://localhost:4200")*/
-@CrossOrigin(exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"})
+@CrossOrigin(origins = "http://localhost:4200")
+/*@CrossOrigin(exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"})*/
+
 @RestController
 @RequestMapping("/books")
 public class ControllerBook {
@@ -18,15 +19,16 @@ public class ControllerBook {
 
     @PostMapping("/add")
     public ResponseEntity<?> addBook(@RequestBody Book book){
+        System.out.println(book.toString());
         try{
             serviceBook.addBook(book);
-            return ResponseEntity.ok("Libro agregado");
+            return ResponseEntity.ok().build();
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/get")
     public List<Book> getBooks(){
         return serviceBook.findAllBooks();
@@ -37,11 +39,15 @@ public class ControllerBook {
         return serviceBook.getBook(id);
     }
 
+    @GetMapping("/getBooksWithoutInventory")
+    public List<Book> getBooksWithoutInventory(){
+        return serviceBook.getBooks();
+    }
     @PutMapping("/update")
     public ResponseEntity<?> updateBook(@RequestBody Book book){
         try{
             serviceBook.updateBook(book);
-            return ResponseEntity.ok("Libro actualizado");
+            return ResponseEntity.ok().build();
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -52,7 +58,7 @@ public class ControllerBook {
     public ResponseEntity<?> deleteBook(@RequestParam(name = "id") Integer id){
         try{
             serviceBook.deleteBook(id);
-            return ResponseEntity.ok("Libro eliminado");
+            return ResponseEntity.ok().build();
         }
         catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
