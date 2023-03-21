@@ -40,6 +40,15 @@ public class ServiceBook {
         }
     }
 
+    public List<Book> getBooksAvailable(){
+        Optional<List<Book>> inventory = bookRepository.getBooksAvailable();
+        if(inventory.isPresent()){
+            return inventory.get();
+        } else {
+            throw new RuntimeException("El inventario del libro no se encuentra");
+        }
+    }
+
     public void updateBook(Book bookRequest){
         Optional<Book> book = bookRepository.findById(bookRequest.getBookId());
         book.ifPresentOrElse((value) -> {

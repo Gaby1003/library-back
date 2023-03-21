@@ -26,4 +26,7 @@ public class Inventory {
 
     @Column(name = "quantity")
     private int quantity;
+
+    @Column(name = "available")
+    private int available;
 }

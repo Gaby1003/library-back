@@ -37,6 +37,7 @@ public class ServiceLibraryUser {
                     .userLastname(userRequest.getUserLastname())
                     .documentNumber(userRequest.getDocumentNumber())
                     .documentType(userRequest.getDocumentType())
+                    .penalty(userRequest.isPenalty())
                     .build());
         }, () -> {
             throw new RuntimeException("El usuario no se encuentra");

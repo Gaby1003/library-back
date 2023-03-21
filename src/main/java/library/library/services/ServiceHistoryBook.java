@@ -19,11 +19,17 @@ public class ServiceHistoryBook {
     private HistoryBooksRepository historyBooksRepository;
 
     public void addHistoryBook(HistoryBooks historyBooks){
-        historyBooksRepository.save(historyBooks);
+        historyBooksRepository.insert(historyBooks.getBook().getBookId(), historyBooks.getUser().getUserId(),
+                historyBooks.getBorrowingDate(), historyBooks.getEstimatedDeliveryDate());
     }
 
-    public List<HistoryBooks> getPenalty(Integer id){
-        Optional<List<HistoryBooks>> penalty = historyBooksRepository.getPenalty(id);
+    public void updateHistoryBook(HistoryBooks historyBooks){
+        historyBooksRepository.update(historyBooks.getBook().getBookId(), historyBooks.getUser().getUserId(),
+                historyBooks.getBorrowingDate(), historyBooks.getDeliveryDate());
+    }
+
+    public List<HistoryBooks> getPenalty(){
+        Optional<List<HistoryBooks>> penalty = historyBooksRepository.getPenalty();
         if(penalty.isPresent()){
             return penalty.get();
         }else {
@@ -45,6 +51,10 @@ public class ServiceHistoryBook {
         }, () -> {
             throw new RuntimeException("El registro no se encuentra");
         });
+    }
+
+    public HistoryBooks getBook(Integer bookId, Integer userId, LocalDate borrowingDate){
+        return  historyBooksRepository.getById(bookId, userId, borrowingDate).get();
     }
 
 

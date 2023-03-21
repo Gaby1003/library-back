@@ -20,12 +20,12 @@ import java.time.LocalDate;
 public class HistoryBooks {
 
     @OneToOne(optional = false, orphanRemoval = true)
-    @JoinColumn(name = "user_id",  nullable = false)
+    @JoinColumn(name = "user_id")
     @Id
     private LibraryUser user;
 
     @OneToOne(optional = false, orphanRemoval = true)
-    @JoinColumn(name = "book_id",  nullable = false)
+    @JoinColumn(name = "book_id")
     @Id
     private Book book;
 

@@ -16,8 +16,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Embeddable
 public class HistoryBooksPK implements Serializable {
-
-
     private LibraryUser user;
 
     private Book book;

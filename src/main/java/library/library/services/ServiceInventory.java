@@ -29,9 +29,11 @@ public class ServiceInventory {
 
     public void updateQuantity(Inventory inventoryRequest){
         Optional<Inventory> inventory = inventoryRepository.getQuantityBooks(inventoryRequest.getBook().getBookId());
+        System.out.println(inventoryRequest.toString() + "service update");
         inventory.ifPresentOrElse((value) -> {
             inventoryRepository.save(inventory.get().toBuilder()
                     .quantity(inventoryRequest.getQuantity())
+                    .available(inventoryRequest.getAvailable())
                     .build());
         }, () -> {
             throw new RuntimeException("El inventario del libro no se encuentra");

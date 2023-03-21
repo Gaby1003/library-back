@@ -30,4 +30,7 @@ public class LibraryUser {
 
     @Column(name = "document_number")
     private String documentNumber;
+
+    @Column(name = "penalty")
+    private boolean penalty=false       ;
 }

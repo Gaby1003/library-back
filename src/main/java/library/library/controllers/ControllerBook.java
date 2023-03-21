@@ -19,7 +19,6 @@ public class ControllerBook {
 
     @PostMapping("/add")
     public ResponseEntity<?> addBook(@RequestBody Book book){
-        System.out.println(book.toString());
         try{
             serviceBook.addBook(book);
             return ResponseEntity.ok().build();
@@ -43,6 +42,12 @@ public class ControllerBook {
     public List<Book> getBooksWithoutInventory(){
         return serviceBook.getBooks();
     }
+
+    @GetMapping("/getBooksAvailable")
+    public List<Book> getBooksAvailable(){
+        return serviceBook.getBooksAvailable();
+    }
+
     @PutMapping("/update")
     public ResponseEntity<?> updateBook(@RequestBody Book book){
         try{
