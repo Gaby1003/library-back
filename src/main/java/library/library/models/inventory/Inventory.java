@@ -28,5 +28,5 @@ public class Inventory {
     private int quantity;
 
     @Column(name = "available")
-    private int available;
+    private int available   ;
 }

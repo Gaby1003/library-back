@@ -3,6 +3,7 @@ package library.library.services;
 import library.library.models.books.Book;
 import library.library.models.inventory.Inventory;
 import library.library.models.inventory.InventoryRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ServiceInventory {
 
-    @Autowired
-    private InventoryRepository inventoryRepository;
+    private final InventoryRepository inventoryRepository;
 
     public void addInventory(Inventory inventory){
         inventoryRepository.save(inventory);

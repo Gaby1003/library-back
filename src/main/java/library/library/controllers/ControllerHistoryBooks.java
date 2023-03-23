@@ -47,7 +47,7 @@ public class ControllerHistoryBooks {
         return serviceHistoryBook.findAllHistory();
     }
 
-    @GetMapping("/getPenalty")              
+    @GetMapping("/getPenalty")
     public List<HistoryBooks> addPenalty(){
         return serviceHistoryBook.getPenalty();
     }

@@ -1,20 +1,18 @@
 package library.library.services;
 
-import library.library.LibraryApplication;
-import library.library.models.books.Book;
 import library.library.models.libraryUsers.LibraryUser;
 import library.library.models.libraryUsers.LibraryUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ServiceLibraryUser {
 
-    @Autowired
-    private LibraryUserRepository libraryUserRepository;
+    private final LibraryUserRepository libraryUserRepository;
 
 
     public void addUser(LibraryUser libraryUser){
@@ -44,7 +42,7 @@ public class ServiceLibraryUser {
         });
     }
 
-    public void deleteBook(int id){
+    public void deleteUser(int id){
         Optional<LibraryUser> user = libraryUserRepository.findById(id);
         user.ifPresentOrElse((value) -> {
             libraryUserRepository.deleteById(id);

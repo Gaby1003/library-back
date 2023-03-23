@@ -1,6 +1,5 @@
 package library.library.controllers;
 
-import library.library.models.books.Book;
 import library.library.models.libraryUsers.LibraryUser;
 import library.library.services.ServiceLibraryUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +51,7 @@ public class ControllerUser {
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteUser(@RequestParam(name = "id") Integer id){
         try{
-            serviceLibraryUser.deleteBook(id);
+            serviceLibraryUser.deleteUser(id);
             return ResponseEntity.ok().build();
         }
         catch (RuntimeException e){

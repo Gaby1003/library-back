@@ -6,6 +6,7 @@ import library.library.models.historyBooks.HistoryBooksPK;
 import library.library.models.historyBooks.HistoryBooksRepository;
 import library.library.models.inventory.Inventory;
 import library.library.models.inventory.InventoryRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ServiceHistoryBook {
-    @Autowired
-    private HistoryBooksRepository historyBooksRepository;
+
+    private final HistoryBooksRepository historyBooksRepository;
 
     public void addHistoryBook(HistoryBooks historyBooks){
         historyBooksRepository.insert(historyBooks.getBook().getBookId(), historyBooks.getUser().getUserId(),
